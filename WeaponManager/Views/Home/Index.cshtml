@@ -1,0 +1,27 @@
+﻿<link rel="stylesheet" href="~/css/main.css" type="text/css" />
+
+@{
+    ViewBag.Title = "WeaponManager";
+}
+
+<br/>
+<div>
+    <h5>Chladné zbraně</h5>
+    <a asp-action="Index" asp-controller="ColdWeapons" class="text-dark">Výpis</a> |
+    <a asp-action="Create" asp-controller="ColdWeapons" class="text-dark">Nová zbraň</a>
+</div>
+<hr/>
+<br/>
+<div>
+    <h5>Pušky</h5>
+    <a asp-action="Index" asp-controller="Rifles" class="text-dark">Výpis</a> |
+    <a asp-action="Create" asp-controller="Rifles" class="text-dark">Nová zbraň</a>
+</div>
+<hr/>
+<br/>
+<div>
+    <h5>Pistole</h5>
+    <a asp-action="Index" asp-controller="Pistols" class="text-dark">Výpis</a> |
+    <a asp-action="Create" asp-controller="Pistols" class="text-dark">Nová zbraň</a>
+</div>
+

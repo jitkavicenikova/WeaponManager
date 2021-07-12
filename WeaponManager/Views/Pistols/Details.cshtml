@@ -1,0 +1,60 @@
+﻿@model WeaponManager.Models.Pistol
+
+@{
+    ViewBag.Title = "Podrobnosti";
+}
+
+<h2>Podrobnosti</h2>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Weight) (g)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Weight)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MuzzleVelocity) (m/s)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MuzzleVelocity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MagazineCapacity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MagazineCapacity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PistolType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PistolType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PistolRange) (m)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PistolRange)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price) (Kč)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-dark">Upravit</a> |
+    <a asp-action="Index" class="text-dark">Zpět</a>
+</div>

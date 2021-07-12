@@ -1,0 +1,62 @@
+﻿@model WeaponManager.Models.Pistol
+
+@{
+    ViewBag.Title = "Odstranit";
+}
+
+<h2>Odstranit</h2>
+
+<div>
+    <h4>@Html.DisplayFor(model => model.Name)</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Weight) (g)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Weight)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MuzzleVelocity) (m/s)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MuzzleVelocity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MagazineCapacity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MagazineCapacity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PistolType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PistolType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PistolRange) (m)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PistolRange)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price) (Kč)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Odstranit" class="btn btn-danger" /> |
+        <a asp-action="Index" class="text-dark">Zpět</a>
+    </form>
+</div>

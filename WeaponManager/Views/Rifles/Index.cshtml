@@ -1,0 +1,103 @@
+﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@using X.PagedList.Web.Common;
+@using WeaponManager.Models;
+
+@model IPagedList<Rifle>
+
+@{
+    ViewBag.Title = "Pušky";
+    // used in Html.DisplayNameFor in table columns
+    var weapon = Model.FirstOrDefault();
+    if (weapon == null)
+        weapon = new Rifle();
+}
+
+<h2>Pušky</h2>
+<br />
+
+@using (Html.BeginForm())
+{
+<p>
+    Název: @Html.TextBox("SearchName", ViewBag.CurrentFilter as string) Minimální cena: @Html.TextBox("Price", ViewBag.CurrentFilter as int?)
+    <input type="submit" value="Hledat" class="btn btn-outline-dark" /> |
+    <button type="button" onclick="location.href='@Url.Action("Create", "Rifles")'" class="btn btn-dark">Nová zbraň</button> |
+    <a asp-action="Index" class="text-dark">Vynulovat filtry</a>
+</p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.ActionLink(@Html.DisplayNameFor(_ => weapon.Name), "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink(@Html.DisplayNameFor(_ => weapon.MuzzleVelocity), "Index", new { sortOrder = ViewBag.MuzzleSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink(@Html.DisplayNameFor(_ => weapon.MagazineCapacity), "Index", new { sortOrder = ViewBag.MagazineSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink(@Html.DisplayNameFor(_ => weapon.Caliber), "Index", new { sortOrder = ViewBag.CaliberSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink(@Html.DisplayNameFor(_ => weapon.RifleType), "Index", new { sortOrder = ViewBag.TypeSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink(@Html.DisplayNameFor(_ => weapon.RifleLength), "Index", new { sortOrder = ViewBag.LengthSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink(@Html.DisplayNameFor(_ => weapon.Price), "Index", new { sortOrder = ViewBag.PriceSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MuzzleVelocity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MagazineCapacity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Caliber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RifleType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RifleLength)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <a asp-action="Edit" class="text-secondary" asp-route-id="@item.Id">Upravit</a> |
+                    <a asp-action="Details"  class="text-secondary" asp-route-id="@item.Id">Podrobnosti</a> |
+                    <a asp-action="Delete" class="text-danger" asp-route-id="@item.Id">Odstranit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+
+<div>
+    @Html.PagedListPager(Model,
+    page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }),
+    new PagedListRenderOptions
+    {
+        LiElementClasses = new string[] { "page-item" },
+        PageClasses = new string[] { "page-link" },
+        LinkToPreviousPageFormat = "«",
+        LinkToNextPageFormat = "»"
+    })
+</div>
